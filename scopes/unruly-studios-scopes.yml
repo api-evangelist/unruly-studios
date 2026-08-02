@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: searched
+source: https://gamelocker.unruly-studios.com/.well-known/openid-configuration
+notes: >-
+  OAuth scopes advertised by the GitLab OAuth/OIDC server on the Gamelocker
+  host (scopes_supported). These are GitLab's standard scopes; descriptions
+  follow GitLab's documented meanings.
+authorization_server: https://gamelocker.unruly-studios.com
+scopes:
+- name: api
+  description: Full read/write access to the API, including all groups, projects, and the container/package registries.
+- name: read_api
+  description: Read-only access to the API, including all groups and projects.
+- name: read_user
+  description: Read-only access to the authenticated user's profile via the /user endpoint and related read-only endpoints.
+- name: read_repository
+  description: Read-only access to repositories on private projects (clone/read files) using Git-over-HTTP or the Repository Files API.
+- name: write_repository
+  description: Read-write access to repositories on private projects (push/commit files) using Git-over-HTTP or the Repository Files API.
+- name: sudo
+  description: Perform API actions as any user in the system (admin only).
+- name: openid
+  description: Authenticate using OpenID Connect; grants access to the userinfo endpoint and ID token.
+- name: profile
+  description: Read the user's profile data (name, nickname, picture) via OpenID Connect.
+- name: email
+  description: Read the user's primary email address via OpenID Connect.

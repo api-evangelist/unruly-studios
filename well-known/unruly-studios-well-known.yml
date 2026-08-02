@@ -1,0 +1,42 @@
+generated: '2026-07-21'
+method: searched
+source: live probes of provider hosts (/.well-known/*)
+notes: >-
+  The Unruly "Gamelocker" backend at gamelocker.unruly-studios.com is a
+  self-hosted GitLab instance (confirmed by gitlab.org OIDC claims). Its GitLab
+  OpenID Provider discovery document is published and returns 200. The public
+  marketing hosts (unrulysplats.com / unruly-studios.com) and the customer app
+  (app.unrulysplats.com) publish no /.well-known/ documents.
+hosts:
+- host: gamelocker.unruly-studios.com
+  probes:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: unruly-studios-gamelocker-openid-configuration.json
+    type: OpenIDConnect
+  - path: /.well-known/oauth-authorization-server
+    status: 302
+  - path: /.well-known/security.txt
+    status: 302
+  - path: /.well-known/api-catalog
+    status: 404
+- host: www.unrulysplats.com
+  probes:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: app.unrulysplats.com
+  probes:
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/security.txt
+    status: 403

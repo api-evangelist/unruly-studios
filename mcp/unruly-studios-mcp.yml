@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: >-
+  Derived from the first-party UnrulyGamelocker.js client operations against
+  the GitLab v4 REST API at gamelocker.unruly-studios.com. No official Unruly
+  MCP server was found.
+notes: >-
+  Unruly publishes no hosted/remote MCP server. This is a CANDIDATE tool list
+  synthesized from the operations the Splats app actually performs against the
+  Gamelocker (GitLab) API — profiles are GitLab projects and game files are
+  repository files. Not an endorsement or a live server.
+server:
+  name: unruly-gamelocker
+  transport: none-published
+  base_api: https://gamelocker.unruly-studios.com/api/v4
+  auth: oauth2 (see authentication/unruly-studios-authentication.yml)
+tools:
+- name: list_profiles
+  description: List a user's coding profiles (GitLab projects).
+  maps_to: GET /users/{user_id}/projects
+- name: get_profile_files
+  description: List files in a profile's repository tree.
+  maps_to: GET /projects/{id}/repository/tree
+- name: pull_project_file
+  description: Fetch the raw contents of a saved game/project file.
+  maps_to: GET /projects/{id}/repository/files/{file_path}/raw
+- name: create_profile
+  description: Create a new coding profile.
+  maps_to: POST /projects
+- name: update_profile
+  description: Rename or update a profile's description.
+  maps_to: PUT /projects/{id}
+- name: delete_profile
+  description: Delete a coding profile.
+  maps_to: DELETE /projects/{id}
+- name: commit_files
+  description: Create, update, or delete game files in a profile via a commit.
+  maps_to: POST /projects/{id}/repository/commits

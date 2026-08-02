@@ -1,0 +1,50 @@
+generated: '2026-07-21'
+method: searched
+source: https://gamelocker.unruly-studios.com/.well-known/openid-configuration
+notes: >-
+  Unruly's "Gamelocker" project-storage backend (gamelocker.unruly-studios.com)
+  is a self-hosted GitLab instance and exposes GitLab's standard OAuth 2.0 /
+  OpenID Connect authorization server. The client library used by the Unruly
+  Splats app (UnrulyGamelocker.js) authenticates against /oauth/token and calls
+  the GitLab REST API at /api/v4 with a bearer/query access_token. These are
+  GitLab-native auth mechanisms, not a bespoke Unruly auth scheme.
+schemes:
+- id: gamelocker_oauth2
+  type: oauth2
+  description: GitLab OAuth 2.0 authorization server on the Gamelocker host.
+  flows:
+    authorization_code:
+      authorization_url: https://gamelocker.unruly-studios.com/oauth/authorize
+      token_url: https://gamelocker.unruly-studios.com/oauth/token
+      refresh_url: https://gamelocker.unruly-studios.com/oauth/token
+    client_credentials:
+      token_url: https://gamelocker.unruly-studios.com/oauth/token
+    password:
+      token_url: https://gamelocker.unruly-studios.com/oauth/token
+      note: >-
+        The Resource Owner Password Credentials grant is enabled on this
+        instance and is what UnrulyGamelocker.js uses today.
+  grant_types:
+  - authorization_code
+  - implicit
+  - password
+  - client_credentials
+  - refresh_token
+  token_endpoint_auth_methods:
+  - client_secret_basic
+  - client_secret_post
+- id: gamelocker_oidc
+  type: openIdConnect
+  description: GitLab OpenID Connect provider on the Gamelocker host.
+  openid_configuration: https://gamelocker.unruly-studios.com/.well-known/openid-configuration
+  issuer: https://gamelocker.unruly-studios.com
+  jwks_uri: https://gamelocker.unruly-studios.com/oauth/discovery/keys
+  userinfo_endpoint: https://gamelocker.unruly-studios.com/oauth/userinfo
+  id_token_signing_alg: RS256
+- id: gamelocker_access_token
+  type: apiKey
+  in: query
+  name: access_token
+  description: >-
+    GitLab personal/OAuth access token passed as an access_token query
+    parameter (or Authorization bearer header) on /api/v4 requests.

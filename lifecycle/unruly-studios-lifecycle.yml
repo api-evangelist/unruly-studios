@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: searched
+source: https://status.unrulysplats.com/
+notes: >-
+  Unruly publishes a live service status page that health-checks its
+  back-end services (Authorization, Gamelocker, Portal, Forum). The
+  Gamelocker API surface is GitLab's v4 REST API, which carries GitLab's own
+  versioning and deprecation lifecycle (path-versioned at /api/v4). Unruly
+  does not publish a public deprecation policy or Sunset/Deprecation header
+  program of its own.
+status_page:
+  url: https://status.unrulysplats.com/
+  type: custom
+  checks:
+  - Authorization
+  - Gamelocker
+  - Portal
+  - Forum
+versioning:
+  scheme: path
+  current: v4
+  note: >-
+    The Gamelocker REST API is served at /api/v4 (GitLab's versioned API
+    path). Version cadence follows the underlying GitLab release.
+deprecation_policy: none-published
+sla: none-published

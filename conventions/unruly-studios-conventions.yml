@@ -1,0 +1,48 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  UnrulyGamelocker.js client (status.unrulysplats.com) + GitLab v4 REST API
+  conventions of the gamelocker.unruly-studios.com instance
+notes: >-
+  Cross-cutting semantics for the Gamelocker API, derived from the first-party
+  UnrulyGamelocker.js client and the fact that gamelocker.unruly-studios.com is
+  a self-hosted GitLab. Conventions are GitLab-native.
+auth:
+  style: oauth2-bearer
+  detail: >-
+    OAuth 2.0 / OIDC token from /oauth/token, passed either as an
+    Authorization bearer header or as an access_token query parameter on
+    /api/v4 requests. See authentication/unruly-studios-authentication.yml.
+pagination:
+  style: page-number
+  params:
+  - page
+  - per_page
+  max_per_page: 100
+  detail: >-
+    GitLab offset pagination; the client requests page=1&per_page=100. Link
+    headers (rel="next"/"last") and X-Total / X-Page response headers are
+    provided by GitLab.
+versioning:
+  style: path
+  value: /api/v4
+error_envelope:
+  style: gitlab
+  detail: >-
+    Errors are returned as JSON with a "message" (or "error") field and the
+    corresponding HTTP status; not RFC 9457 problem+json.
+rate_limit_signal:
+  detail: >-
+    GitLab applies request rate limiting and returns RateLimit-Limit /
+    RateLimit-Remaining / RateLimit-Reset and Retry-After headers when
+    configured on the instance.
+resources:
+  detail: >-
+    Kids' coding "profiles" and game files are modeled as GitLab projects and
+    repository files (projects, projects/:id/repository/tree,
+    repository/files/:path/raw, repository/commits).
+cross_links:
+  authentication: authentication/unruly-studios-authentication.yml
+  scopes: scopes/unruly-studios-scopes.yml
+  lifecycle: lifecycle/unruly-studios-lifecycle.yml
+  well_known: well-known/unruly-studios-well-known.yml
