@@ -1,15 +1,11 @@
 generated: '2026-07-21'
 method: derived
 status: candidate
-source: >-
-  Derived from the first-party UnrulyGamelocker.js client operations against
-  the GitLab v4 REST API at gamelocker.unruly-studios.com. No official Unruly
-  MCP server was found.
-notes: >-
-  Unruly publishes no hosted/remote MCP server. This is a CANDIDATE tool list
-  synthesized from the operations the Splats app actually performs against the
-  Gamelocker (GitLab) API — profiles are GitLab projects and game files are
-  repository files. Not an endorsement or a live server.
+source: Derived from the first-party UnrulyGamelocker.js client operations against the GitLab v4 REST
+  API at gamelocker.unruly-studios.com. No official Unruly MCP server was found.
+notes: Unruly publishes no hosted/remote MCP server. This is a CANDIDATE tool list synthesized from the
+  operations the Splats app actually performs against the Gamelocker (GitLab) API — profiles are GitLab
+  projects and game files are repository files. Not an endorsement or a live server.
 server:
   name: unruly-gamelocker
   transport: none-published
@@ -37,3 +33,9 @@ tools:
 - name: commit_files
   description: Create, update, or delete game files in a profile via a commit.
   maps_to: POST /projects/{id}/repository/commits
+deployment:
+  mode: none
+  verified: derived
+  tools: 7
+  checked: '2026-08-12'
+  source: catalog MCP census
