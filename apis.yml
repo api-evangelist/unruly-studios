@@ -56,6 +56,11 @@ apis:
   baseURL: https://gamelocker.unruly-studios.com/api/v4
   tags:
   - GitLab
+  - Authentication
+  - OpenID Connect
+  - Repository
+  tags_raw:
+  - GitLab
   - OAuth
   - OpenID Connect
   - Repository
