@@ -86,8 +86,9 @@ apis:
     url: well-known/unruly-studios-well-known.yml
   - type: Conventions
     url: conventions/unruly-studios-conventions.yml
-  - type: MCPServer
+  - type: X-MCPServerCandidate
     url: mcp/unruly-studios-mcp.yml
+    note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -120,8 +121,9 @@ common:
   url: scopes/unruly-studios-scopes.yml
 - type: WellKnown
   url: well-known/unruly-studios-well-known.yml
-- type: MCPServer
+- type: X-MCPServerCandidate
   url: mcp/unruly-studios-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
 - type: LLMsTxt
   url: llms/unruly-studios-llms.txt
 - type: DomainSecurity
